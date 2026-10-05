@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://5jdpkfe5f78i"]
+
+[ext_resource type="Script" uid="uid://dix202cqqdk6f" path="res://scenes/Enemy/enemy.gd" id="1_84vye"]
+[ext_resource type="Texture2D" uid="uid://bggiyuvvcutx8" path="res://assets/frames/哥布林/frame0000.png" id="2_ixhtt"]
+[ext_resource type="Texture2D" uid="uid://ynr64i153bts" path="res://assets/frames/哥布林/frame0001.png" id="3_wfr8x"]
+[ext_resource type="Texture2D" uid="uid://dam737xov7ktp" path="res://assets/frames/哥布林/frame0003.png" id="5_q0kbr"]
+[ext_resource type="Texture2D" uid="uid://bu4sif5b5icrg" path="res://assets/frames/哥布林/frame0005.png" id="7_pg6jp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhunq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ixhtt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wfr8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q0kbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pg6jp")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_riqys"]
+radius = 12.0
+
+[node name="Enemy" type="Area2D" unique_id=230788613]
+script = ExtResource("1_84vye")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1312192405]
+position = Vector2(-2, -19)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_bhunq")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.40774295
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=404929749]
+shape = SubResource("CircleShape2D_riqys")

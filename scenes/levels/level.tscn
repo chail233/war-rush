@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://diax2uk71id6x"]
+
+[ext_resource type="Texture2D" uid="uid://e056ej6gxqqq" path="res://assets/image/map0.png" id="1_377w7"]
+[ext_resource type="Script" uid="uid://ctvm4c0p74awc" path="res://scenes/levels/level.gd" id="1_b2cq8"]
+[ext_resource type="PackedScene" uid="uid://bml667w8qswvh" path="res://scenes/TowerBase/tower_base.tscn" id="2_bovvr"]
+[ext_resource type="PackedScene" uid="uid://ct7q7n5npmvlw" path="res://scenes/BuildUI/build_ui.tscn" id="4_xb4v1"]
+
+[sub_resource type="Curve2D" id="Curve2D_bovvr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1645, -43, 0, 0, 0, 0, 1529, 70, 0, 0, 0, 0, 1388, 140, 0, 0, 0, 0, 1209, 189, 0, 0, 0, 0, 969, 233, 0, 0, 0, 0, 725, 289, 0, 0, 0, 0, 618, 337, 0, 0, 0, 0, 532, 446, 0, 0, 0, 0, 434, 570, 0, 0, 0, 0, 342, 674, 0, 0, 0, 0, 238, 761, 0, 0, 0, 0, 99, 856, 0, 0, 0, 0, -44, 891)
+}
+point_count = 13
+
+[node name="Level" type="Node2D" unique_id=942284370]
+script = ExtResource("1_b2cq8")
+
+[node name="Map" type="Node2D" parent="." unique_id=1863284558]
+
+[node name="BG" type="Sprite2D" parent="Map" unique_id=291070122]
+texture_filter = 1
+position = Vector2(960, 544)
+texture = ExtResource("1_377w7")
+
+[node name="TowerBases" type="Node2D" parent="Map" unique_id=40054351]
+
+[node name="TowerBase" parent="Map/TowerBases" unique_id=1677567033 instance=ExtResource("2_bovvr")]
+position = Vector2(766, 515)
+
+[node name="TowerBase2" parent="Map/TowerBases" unique_id=1691635852 instance=ExtResource("2_bovvr")]
+position = Vector2(1212, 369)
+
+[node name="TowerBase3" parent="Map/TowerBases" unique_id=260305600 instance=ExtResource("2_bovvr")]
+position = Vector2(1535, 264)
+
+[node name="TowerBase4" parent="Map/TowerBases" unique_id=754044827 instance=ExtResource("2_bovvr")]
+position = Vector2(127, 642)
+
+[node name="TowerBase5" parent="Map/TowerBases" unique_id=1767041148 instance=ExtResource("2_bovvr")]
+position = Vector2(1030, 705)
+
+[node name="TowerBase6" parent="Map/TowerBases" unique_id=1751993407 instance=ExtResource("2_bovvr")]
+position = Vector2(1797, 1031)
+
+[node name="Entities" type="Node2D" parent="." unique_id=1673574819]
+
+[node name="Paths" type="Node2D" parent="." unique_id=1820526130]
+
+[node name="Path1" type="Path2D" parent="Paths" unique_id=1696998058]
+curve = SubResource("Curve2D_bovvr")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths/Path1" unique_id=788319138]
+position = Vector2(1645, -43)
+rotation = 2.226729
+rotates = false
+loop = false
+
+[node name="UI" type="Node2D" parent="." unique_id=1404328469]
+
+[node name="BuildUI" parent="UI" unique_id=773992508 instance=ExtResource("4_xb4v1")]
+visible = false
+offset_left = -197.0
+offset_top = -135.0
+offset_right = -197.0
+offset_bottom = -135.0
+
+[connection signal="build_tower" from="UI/BuildUI" to="." method="_on_build_ui_build_tower"]

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bml667w8qswvh"]
+
+[ext_resource type="Script" uid="uid://cy3khe55v7eo0" path="res://scenes/TowerBase/tower_base.gd" id="1_1dbo3"]
+[ext_resource type="Texture2D" uid="uid://ctj1tm0v63kwn" path="res://assets/image/TowerBase.png" id="1_jcx5b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jcx5b"]
+radius = 68.85147
+
+[node name="TowerBase" type="Node2D" unique_id=1677567033]
+script = ExtResource("1_1dbo3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1874291773]
+position = Vector2(14, -40)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_jcx5b")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2008523203]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1217175630]
+position = Vector2(3.9999995, -2.9999998)
+rotation = 0.5427974
+skew = 0.58119464
+shape = SubResource("CircleShape2D_jcx5b")
+
+[node name="HighLight" type="Sprite2D" parent="." unique_id=2092834996]
+visible = false
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
